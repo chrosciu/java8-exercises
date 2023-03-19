@@ -6,17 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 import static eu.chrost.java8.people.people.Sex.FEMALE;
 import static eu.chrost.java8.people.people.Sex.MALE;
 import static java.util.Collections.emptyList;
-import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -36,18 +32,14 @@ public class Part04StreamsTest {
 
     @Test
     public void doesAnyFemaleExist() {
-        final boolean anyFemale = PEOPLE.stream()
-                .anyMatch(p -> p.getSex() == FEMALE);
+        final boolean anyFemale = false;
 
         assertThat(anyFemale).isTrue();
     }
 
     @Test
     public void shouldReturnNamesSorted() {
-        final List<String> names = PEOPLE.stream()
-                .map(Person::getName)
-                .sorted()
-                .collect(toList());
+        final List<String> names = emptyList();
 
         assertThat(names).containsExactly("Alice", "Bob", "Eve", "Jane", "Steve");
     }
@@ -57,8 +49,7 @@ public class Part04StreamsTest {
      */
     @Test
     public void areAllPeopleSlim() {
-        final boolean allSlim = PEOPLE.stream()
-                .allMatch(p -> p.getWeight() < 80);
+        final boolean allSlim = true;
 
         assertThat(allSlim).isFalse();
     }
@@ -119,36 +110,6 @@ public class Part04StreamsTest {
         assertThat(distinctCountryCodes).containsExactly(10, 11, 12);
     }
 
-    /**
-     * For each person born after LocalDate.of(1985, Month.DECEMBER, 25), add name to 'names'
-     */
-    @Test
-    public void forEachYoungPerson() {
-        //given
-        List<String> names = new ArrayList<>();
-
-        //when
-        // PEOPLE.stream()...forEach()
-
-        //then
-        assertThat(names).containsExactly("Jane", "Eve");
-    }
-
-    /**
-     * @see Iterator#forEachRemaining(Consumer)
-     */
-    @Test
-    public void shouldRunOverIterator() {
-        //given
-        final Iterator<Integer> iter = Arrays.asList(1, 2, 3).iterator();
-        final StringBuilder sb = new StringBuilder();
-
-        //when
-        //use iter... here
-
-        //then
-        assertThat(sb.toString()).isEqualToIgnoringCase("123");
-    }
 
 
 }

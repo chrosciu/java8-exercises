@@ -18,7 +18,7 @@ public class Part02aMethodReferencesTest {
 
     @Test
     public void shouldPrependHello() {
-        final Function<Integer, String> fun = null;
+        final Function<Integer, String> fun = this::prependHello;
 
         assertThat(fun.apply(42)).isEqualTo("Hello 42");
     }
@@ -26,9 +26,18 @@ public class Part02aMethodReferencesTest {
 
     @Test
     public void shouldProduceAnswer() {
-        final Supplier<Integer> answerFun = null;
+        final Supplier<Integer> answerFun = Part02aMethodReferencesTest::get42;
 
         assertThat(answerFun.get()).isEqualTo(42);
+    }
+
+    @Test
+    public void shouldCheckIfIsEmpty() {
+        final Predicate<String> isEmpty = null;
+
+        assertThat(isEmpty.test("")).isTrue();
+        assertThat(isEmpty.test(" ")).isFalse();
+        assertThat(isEmpty.test("Marcin")).isFalse();
     }
 
     private String prependHello(Integer input) {

@@ -100,7 +100,10 @@ public class Part04StreamsTest {
      */
     @Test
     public void twoOldestPeople() {
-        final List<Person> oldest = emptyList();
+        final List<Person> oldest = PEOPLE.stream()
+                .sorted(Comparator.comparing(Person::getDateOfBirth))
+                .limit(2)
+                .collect(Collectors.toList());
 
         assertThat(oldest).containsExactly(PEOPLE.get(2), PEOPLE.get(1));
     }
@@ -110,7 +113,9 @@ public class Part04StreamsTest {
      */
     @Test
     public void totalWeight() {
-        final int totalWeight = 0;
+        final int totalWeight = PEOPLE.stream()
+                .mapToInt(Person::getWeight)
+                .sum();
 
         assertThat(totalWeight).isEqualTo(333);
     }
@@ -122,7 +127,11 @@ public class Part04StreamsTest {
      */
     @Test
     public void findUniqueCountryCodes() {
-        final List<Integer> distinctCountryCodes = emptyList();
+        final List<Integer> distinctCountryCodes = PEOPLE.stream()
+                .flatMap(person -> person.getPhoneNumbers().stream())
+                .map(phone -> phone.getCountryCode())
+                .distinct()
+                .collect(Collectors.toList());
 
         assertThat(distinctCountryCodes).containsExactly(10, 11, 12);
     }

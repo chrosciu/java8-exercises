@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static eu.chrost.java8.people.Sex.FEMALE;
 import static eu.chrost.java8.people.Sex.MALE;
@@ -46,7 +48,10 @@ public class Part04StreamsTest {
 
     @Test
     public void shouldReturnNamesSorted() {
-        final List<String> names = emptyList();
+        final List<String> names = PEOPLE.stream()
+                .map(Person::getName)
+                .sorted()
+                .collect(Collectors.toList());
 
         assertThat(names).containsExactly("Alice", "Bob", "Eve", "Jane", "Steve");
     }
@@ -56,7 +61,8 @@ public class Part04StreamsTest {
      */
     @Test
     public void areAllPeopleSlim() {
-        final boolean allSlim = true;
+        final boolean allSlim = PEOPLE.stream()
+                        .allMatch(p -> p.getWeight() < 80.0);
 
         assertThat(allSlim).isFalse();
     }
@@ -66,21 +72,25 @@ public class Part04StreamsTest {
      */
     @Test
     public void areAllPeopleNotSlim() {
-        final boolean allNotSlim = true;
+        final boolean allNotSlim = PEOPLE.stream()
+                .allMatch(p -> p.getWeight() > 80.0);
 
         assertThat(allNotSlim).isFalse();
     }
 
     @Test
     public void findTallestPerson() {
-        final Optional<Person> max = Optional.empty();
+        //final Optional<Person> max = PEOPLE.stream().max((o1, o2) -> o1.getHeight() - o2.getHeight());
+        final Optional<Person> max = PEOPLE.stream().max(Comparator.comparingInt(Person::getHeight));
 
         assertThat(max).hasValue(PEOPLE.get(2));
     }
 
     @Test
     public void countMales() {
-        final long malesCount = 0;
+        final long malesCount = PEOPLE.stream()
+                .filter(p -> p.getSex() == MALE)
+                .count();
 
         assertThat(malesCount).isEqualTo(2);
     }
@@ -116,7 +126,6 @@ public class Part04StreamsTest {
 
         assertThat(distinctCountryCodes).containsExactly(10, 11, 12);
     }
-
 
 
 }

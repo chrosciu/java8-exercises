@@ -20,4 +20,29 @@ public class StringEditorTest {
         String result = stringEditor.transform(input, StringEditor.OperationType.TO_LOWER);
         assertThat(result).isEqualTo("marcin");
     }
+
+    @Test
+    void shouldPrependHello() {
+        String input = "Marcin";
+        StringEditor stringEditor = new StringEditor();
+        String result = stringEditor.transform(input, StringEditor.OperationType.PREPEND_HELLO);
+        assertThat(result).isEqualTo("Hello Marcin");
+    }
+
+
+    @Test
+    void shouldAppendHello() {
+        String input = "Marcin";
+        StringEditor stringEditor = new StringEditor();
+        String result = stringEditor.transform(input, StringEditor.OperationType.APPEND_HELLO);
+        assertThat(result).isEqualTo("Marcin Hello");
+    }
+
+    @Test
+    void shouldCopy() {
+        String input = "Marcin";
+        StringEditor stringEditor = new StringEditor();
+        String result = stringEditor.transform(input, StringEditor.OperationType.COPY);
+        assertThat(result).isEqualTo("Marcin");
+    }
 }

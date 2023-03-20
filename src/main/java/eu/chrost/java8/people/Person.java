@@ -1,4 +1,4 @@
-package eu.chrost.java8.people.people;
+package eu.chrost.java8.people;
 
 import java.time.LocalDate;
 import java.util.Arrays;

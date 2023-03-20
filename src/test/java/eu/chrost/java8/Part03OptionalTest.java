@@ -1,13 +1,13 @@
 package eu.chrost.java8;
 
-import eu.chrost.java8.people.people.Person;
+import eu.chrost.java8.people.Person;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Optional;
 
-import static eu.chrost.java8.people.people.Sex.MALE;
+import static eu.chrost.java8.people.Sex.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 

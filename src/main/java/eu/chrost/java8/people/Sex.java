@@ -1,4 +1,4 @@
-package eu.chrost.java8.people.people;
+package eu.chrost.java8.people;
 
 public enum Sex {
 

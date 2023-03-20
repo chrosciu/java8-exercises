@@ -1,7 +1,7 @@
 package eu.chrost.java8;
 
-import eu.chrost.java8.people.people.Person;
-import eu.chrost.java8.people.people.PersonDao;
+import eu.chrost.java8.people.Person;
+import eu.chrost.java8.people.PersonDao;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package eu.chrost.java8.people.people;
+package eu.chrost.java8.people;
 
 import java.io.BufferedReader;
 import java.io.IOException;

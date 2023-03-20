@@ -1,7 +1,7 @@
 package eu.chrost.java8;
 
-import eu.chrost.java8.people.people.Person;
-import eu.chrost.java8.people.people.Phone;
+import eu.chrost.java8.people.Person;
+import eu.chrost.java8.people.Phone;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static eu.chrost.java8.people.people.Sex.FEMALE;
-import static eu.chrost.java8.people.people.Sex.MALE;
+import static eu.chrost.java8.people.Sex.FEMALE;
+import static eu.chrost.java8.people.Sex.MALE;
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 

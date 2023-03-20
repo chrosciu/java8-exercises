@@ -31,7 +31,7 @@ public class Part02aMethodReferencesTest {
         assertThat(answerFun.get()).isEqualTo(42);
     }
 
-    private String prependHello(String input) {
+    private String prependHello(Integer input) {
         return "Hello " + input;
     }
 

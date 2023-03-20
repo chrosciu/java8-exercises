@@ -32,7 +32,14 @@ public class Part04StreamsTest {
 
     @Test
     public void doesAnyFemaleExist() {
-        final boolean anyFemale = false;
+        final boolean anyFemale = PEOPLE.stream()
+                .anyMatch(p -> p.getSex() == FEMALE);
+//        final boolean anyFemale = PEOPLE.stream()
+//                .map(Person::getSex)
+//                .anyMatch(FEMALE::equals);
+//        final boolean anyFemale = PEOPLE.stream()
+//                .filter(p -> p.getSex() == FEMALE)
+//                .count() > 0;
 
         assertThat(anyFemale).isTrue();
     }

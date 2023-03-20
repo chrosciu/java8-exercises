@@ -19,7 +19,7 @@ public class Part02FunctionalInterfacesTest {
 
     @Test
     public void shouldPrependHello() {
-        final Function<Integer, String> fun = null;
+        final Function<Integer, String> fun = i -> "Hello " + i;
 
         assertThat(fun.apply(42)).isEqualTo("Hello 42");
     }
@@ -27,14 +27,14 @@ public class Part02FunctionalInterfacesTest {
 
     @Test
     public void shouldProduceAnswer() {
-        final Supplier<Integer> answerFun = null;
+        final Supplier<Integer> answerFun = () -> 42;
 
         assertThat(answerFun.get()).isEqualTo(42);
     }
 
     @Test
     public void shouldDecideIfNegative() {
-        final Predicate<Double> isNegative = null;
+        final Predicate<Double> isNegative = d -> d < 0.0;
 
         assertThat(isNegative.test(3.0)).isFalse();
         assertThat(isNegative.test(0.0)).isFalse();
@@ -45,7 +45,7 @@ public class Part02FunctionalInterfacesTest {
     public void shouldCallOtherClassInConsumer() {
         final Date dateMock = mock(Date.class);
 
-        final Consumer<Long> consumer = null;
+        final Consumer<Long> consumer = l -> dateMock.setTime(l);
 
         consumer.accept(1000L);
         consumer.accept(2000L);
@@ -59,7 +59,7 @@ public class Part02FunctionalInterfacesTest {
     public void shouldCallOtherClassInPrimitiveConsumer() {
         final Date dateMock = mock(Date.class);
 
-        final LongConsumer consumer = null;
+        final LongConsumer consumer = l -> dateMock.setTime(l);
 
         consumer.accept(1000L);
         consumer.accept(2000L);

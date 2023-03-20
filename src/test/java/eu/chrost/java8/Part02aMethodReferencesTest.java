@@ -23,7 +23,6 @@ public class Part02aMethodReferencesTest {
         assertThat(fun.apply(42)).isEqualTo("Hello 42");
     }
 
-
     @Test
     public void shouldProduceAnswer() {
         final Supplier<Integer> answerFun = Part02aMethodReferencesTest::get42;
@@ -33,7 +32,7 @@ public class Part02aMethodReferencesTest {
 
     @Test
     public void shouldCheckIfIsEmpty() {
-        final Predicate<String> isEmpty = null;
+        final Predicate<String> isEmpty = String::isEmpty;
 
         assertThat(isEmpty.test("")).isTrue();
         assertThat(isEmpty.test(" ")).isFalse();
@@ -47,9 +46,5 @@ public class Part02aMethodReferencesTest {
     private static Integer get42() {
         return 42;
     }
-
-
-
-
 
 }

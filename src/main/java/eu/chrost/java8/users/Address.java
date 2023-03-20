@@ -1,18 +1,10 @@
 package eu.chrost.java8.users;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
+@RequiredArgsConstructor
 public class Address {
-    private String street;
-
-    public Address(String street) {
-        this.street = street;
-    }
-
-
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
+    private final String street;
 }

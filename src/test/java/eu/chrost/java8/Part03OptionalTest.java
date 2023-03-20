@@ -1,6 +1,7 @@
 package eu.chrost.java8;
 
 import eu.chrost.java8.people.Person;
+import eu.chrost.java8.users.Address;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -82,7 +83,12 @@ public class Part03OptionalTest {
      * Hint: use map/filter/flatMap/ifPresent methods from Optional class.
      */
     private Optional<String> tryLookupAddressById(int id) {
-        return Optional.empty(); // tryFindPerson(id).
+        Optional<Person> maybePerson = tryFindPerson(id);
+        Optional<Person> maybeMalePerson = maybePerson.filter(person -> person.getSex() == MALE);
+        Optional<String> maybeAddress = maybeMalePerson.flatMap(this::tryLookupAddress);
+        Optional<String> maybeNotEmptyAddress = maybeAddress.filter(address -> !address.isEmpty());
+        Optional<String> maybeTrimmedAddress = maybeNotEmptyAddress.map(String::trim);
+        return maybeTrimmedAddress;
     }
 
     @Test

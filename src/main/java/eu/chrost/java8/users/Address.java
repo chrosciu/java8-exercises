@@ -1,5 +1,8 @@
 package eu.chrost.java8.users;
 
+import lombok.Getter;
+
+@Getter
 public class Address {
     private String street;
 
@@ -7,9 +10,7 @@ public class Address {
         this.street = street;
     }
 
-    public String getStreet() {
-        return street;
-    }
+
 
     public void setStreet(String street) {
         this.street = street;
